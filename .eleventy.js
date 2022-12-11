@@ -10,7 +10,7 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const Image = require("@11ty/eleventy-img");
 module.exports = function(eleventyConfig) {
   // eleventyConfig.addPlugin(pluginTOC);
-  eleventyConfig.addPlugin(svgContents); 
+  eleventyConfig.addPlugin(svgContents);
   eleventyConfig.addPlugin(embedEverything);
   eleventyConfig.addShortcode("version", function () {
     return String(Date.now());
@@ -105,18 +105,18 @@ module.exports = function(eleventyConfig) {
    // Creates custom collection "posts"
   //  eleventyConfig.addCollection("posts", function(collection) {
   //   const coll = collection.getFilteredByGlob("posts/*.md");
-  
+
   //   for(let i = 0; i < coll.length ; i++) {
   //     const prevPost = coll[i-1];
   //     const nextPost = coll[i + 1];
-  
+
   //     coll[i].data["prevPost"] = prevPost;
   //     coll[i].data["nextPost"] = nextPost;
   //   }
-  
+
   //   return coll;
   // });
-    
+
 
    // Creates custom collection "results" for search
    const searchFilter = require("./filters/searchFilter");
@@ -124,7 +124,7 @@ module.exports = function(eleventyConfig) {
    eleventyConfig.addCollection("results", collection => {
     return [...collection.getFilteredByGlob("**/*.md")];
    });
-  
+
    // Creates custom collection "menuItems"
    eleventyConfig.addCollection("menuItems", collection =>
     collection
@@ -212,7 +212,7 @@ module.exports = function(eleventyConfig) {
       const [attrName, href] = tokens[idx].attrs.find(attr => attr[0] === 'href')
       if (href && (!href.includes('franknoirot.co') && !href.startsWith('/') && !href.startsWith('#'))) {
         tokens[idx].attrPush([ 'target', '_blank' ])
-        tokens[idx].attrPush([ 'rel', 'noopener noreferrer' ])
+        tokens[idx].attrPush([ 'rel', 'noopener' ])
       }
     })
     .use(markdownItAnchor, opts)
